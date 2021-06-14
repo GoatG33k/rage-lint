@@ -1,0 +1,5 @@
+.idea/
+.venv/
+dumps/
+proprietary/
+schema.xsd
