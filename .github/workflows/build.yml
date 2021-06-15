@@ -1,8 +1,9 @@
 on: [push]
 jobs:
-  test:
+  build:
     runs-on: windows-latest
     name: Build Executable
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
