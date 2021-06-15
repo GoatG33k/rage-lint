@@ -7,9 +7,12 @@ against Rockstar's own definitions.
 
 ![Preview Image](./docs/preview.png)
 
-> NOTE: This software is INCOMPLETE, and probably needs a whole rewrite before it is functioning properly, but you can play around with it in the meantime.
+> NOTE: This software is EXPERIMENTAL, there are likely XSD generation issues laying around
 
 ## Usage
+A **rage-lint.exe** file is provided in the [releases tab](https://github.com/GoatG33k/rage-lint/releases).
+
+## Compiling
 To use this script, first install the dependencies with `pip install -r requirements.txt`, then call it like so:
 ```
 python3 rage-lint.py **/*.meta
