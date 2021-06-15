@@ -21,14 +21,14 @@ with open(os.devnull, 'wb') as null:
         cmd_parts = (sys.executable, script_path, test_file)
         rc = 0
         try:
-            rc = subprocess.check_call(cmd_parts, env=os.environ, stdout=null, stderr=null)
+            rc = subprocess.check_call(cmd_parts, env=os.environ, stdout=null )
         except subprocess.CalledProcessError as e:
             rc = e.returncode
 
         # test return code
         if (not expected_to_fail and rc > 0) or (expected_to_fail and rc == 0):
-            print("%sTest '%s' FAILED! Expected %s, but it was not...%s" % (
-                fg('red'), test_name, expected_state_str, attr(0)))
+            print("%sTest '%s' FAILED! Expected %s%s, but it was not...%s" % (
+                fg('red'), test_name, expected_state_str,fg('red'), attr(0)))
             failed = True
         else:
             print("%sTest '%s' PASSED!%s" % (fg('green'), test_name, attr(0)))

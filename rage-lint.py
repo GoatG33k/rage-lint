@@ -1,7 +1,7 @@
-import sys
 import argparse
 import glob
 import os.path
+import sys
 from os.path import relpath, realpath, dirname, exists
 from urllib import request
 
@@ -58,19 +58,19 @@ failedFiles = []
 
 
 def handle_pass():
-    print("%s OK%s" % (fg('green'), attr(0)))
+    print("%s OK%s" % (fg('green'), attr(0)), file=sys.stderr)
 
 
 def handle_fail(path, msg):
     failedFiles.append((path, msg))
-    print("%s FAIL%s" % (fg('red'), attr(0)))
-    print(("  - %s" + msg + "%s") % (fg('red'), attr(0)) + "\n")
+    print("%s FAIL%s" % (fg('red'), attr(0)), file=sys.stderr)
+    print(("  - %s" + msg + "%s") % (fg('red'), attr(0)) + "\n", file=sys.stderr)
 
 
 def handle_skip(path, msg):
     skippedFiles.append((path, msg))
-    print("%s WARN%s" % (fg('yellow'), attr(0)))
-    print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n")
+    print("%s WARN%s" % (fg('yellow'), attr(0)), file=sys.stderr)
+    print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n", file=sys.stderr)
 
 
 __VERSION__ = '0.0.1-rc2'
@@ -78,7 +78,7 @@ copyright_str = '\n'.join((
     '===',
     '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
     '===     %s[[ %sVersion %s%s%s ]]%s' % (
-    fg('dark_gray'), fg('white'), fg('yellow'), __VERSION__, fg('dark_gray'), fg('cyan')),
+        fg('dark_gray'), fg('white'), fg('yellow'), __VERSION__, fg('dark_gray'), fg('cyan')),
     '===\n',
 ))
 print(fg('cyan') + copyright_str + attr(0))
@@ -86,7 +86,7 @@ print(fg('cyan') + copyright_str + attr(0))
 print("%sFound %d file%s to lint...%s\n" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
 for file in files:
     relative_file_path = os.path.relpath(file)
-    print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="")
+    print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="", file=sys.stderr)
     try:
         doc = etree.parse(file, parser=etree.XMLParser(remove_comments=True))
         # check that the root is recognized
