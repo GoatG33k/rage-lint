@@ -21,7 +21,7 @@ VSVersionInfo(
         StringStruct(u'LegalCopyright', u'\xa9 GoatGeek - Licensed under the MIT License'),
         StringStruct(u'OriginalFilename', u'rage-lint.exe'),
         StringStruct(u'ProductName', u'RAGE Metafile Linter'),
-        StringStruct(u'ProductVersion', u'0.0.1-rc1')])
+        StringStruct(u'ProductVersion', u'0.0.1-rc2')])
       ]), 
     VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]
