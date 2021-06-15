@@ -26,7 +26,6 @@ schemaPath = relpath(dirname(realpath(__file__)) + '/schema.xsd')
 if not exists(schemaPath):
     xsdUrl = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
     with request.urlopen(xsdUrl) as response, open(schemaPath, 'w') as f:
-        print("Reading XSD schema...")
         f.write(response.read().decode('utf-8'))
         f.close()
 
@@ -73,7 +72,17 @@ def handle_skip(path, msg):
     print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n")
 
 
-print("%sFound %d file%s to lint...%s" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
+__VERSION__ = '0.0.1-rc1'
+copyright_str = '\n'.join((
+    '===',
+    '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
+    '===     %s[[ %sVersion %s%s%s ]]%s' % (
+    fg('dark_gray'), fg('white'), fg('yellow'), __VERSION__, fg('dark_gray'), fg('cyan')),
+    '===\n',
+))
+print(fg('cyan') + copyright_str + attr(0))
+
+print("%sFound %d file%s to lint...%s\n" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
 for file in files:
     relative_file_path = os.path.relpath(file)
     print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="")
