@@ -1,3 +1,4 @@
+import sys
 import argparse
 import glob
 import os.path
@@ -72,7 +73,7 @@ def handle_skip(path, msg):
     print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n")
 
 
-__VERSION__ = '0.0.1-rc1'
+__VERSION__ = '0.0.1-rc2'
 copyright_str = '\n'.join((
     '===',
     '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
@@ -136,4 +137,4 @@ if totalFailedFiles > 0:
     for failedFile in failedFiles:
         print("  - %s%s %s(%s)%s" % (fg('red'), failedFile[0], fg('yellow'), failedFile[1], attr(0)))
 
-exit(code)
+sys.exit(code)

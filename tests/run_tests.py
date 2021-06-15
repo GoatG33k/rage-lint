@@ -34,4 +34,4 @@ with open(os.devnull, 'wb') as null:
             print("%sTest '%s' PASSED!%s" % (fg('green'), test_name, attr(0)))
 
 if failed:
-    exit(1)
+    sys.exit(1)
