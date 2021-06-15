@@ -7,7 +7,6 @@ from colored import attr, fg
 
 script_path = os.path.relpath(os.path.dirname(__file__) + "/../rage-lint.py")
 search_glob = os.path.dirname(__file__).replace("\\", "/") + "/xml/**/*.xml"
-print(search_glob)
 files = glob.glob(search_glob)
 failed = False
 with open(os.devnull, 'wb') as null:
@@ -28,7 +27,8 @@ with open(os.devnull, 'wb') as null:
 
         # test return code
         if (not expected_to_fail and rc > 0) or (expected_to_fail and rc == 0):
-            print("%sTest '%s' FAILED! Expected %s%s" % (fg('red'), test_name, expected_state_str, attr(0)))
+            print("%sTest '%s' FAILED! Expected %s, but it was not...%s" % (
+                fg('red'), test_name, expected_state_str, attr(0)))
             failed = True
         else:
             print("%sTest '%s' PASSED!%s" % (fg('green'), test_name, attr(0)))

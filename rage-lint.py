@@ -24,7 +24,7 @@ args = argParser.parse_args()
 xsdSchema = None
 schemaPath = relpath(dirname(realpath(__file__)) + '/schema.xsd')
 if not exists(schemaPath):
-    xsdUrl = "https://gitcdn.xyz/repo/GoatG33k/gta5-xsd/master/GTA5.xsd"
+    xsdUrl = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
     with request.urlopen(xsdUrl) as response, open(schemaPath, 'w') as f:
         print("Reading XSD schema...")
         f.write(response.read().decode('utf-8'))
