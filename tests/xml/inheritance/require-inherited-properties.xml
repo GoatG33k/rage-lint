@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT FAIL (Element 'MaxTimeMoveNearCrimeMs': This element is not expected. Expected is
+( Name )) -->
+
+<!-- 
+  This element tests:
+   * inherited properties are required
+-->
+<CTaskWitness__Tunables>
+    <!-- <Name> is missing -->
+    <MaxTimeMoveNearCrimeMs value="0"/> <!-- allow 0 -->
+    <MaxTimeMoveToLawMs value="0"/>
+    <MaxTimeSearchMs value="0"/>
+    <MaxTimeMoveToLawFailedPathfindingMs value="0"/>
+</CTaskWitness__Tunables>

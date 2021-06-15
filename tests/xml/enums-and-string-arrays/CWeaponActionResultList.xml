@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- EXPECT PASS -->
+
+<!-- 
+  This element tests:
+   * enum properties
+   * array<string>
+-->
+<CWeaponActionResultList>
+    <WeaponType>ENUM_TEST ENUM_INVALID</WeaponType> <!-- TODO: Validation on enum strings -->
+    <aActionResults> <!-- test array<string> -->
+        <Item>STRINGS</Item>
+        <Item>GO</Item>
+        <Item>HERE</Item>
+    </aActionResults>
+</CWeaponActionResultList>

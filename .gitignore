@@ -1,5 +1,14 @@
 .idea/
 .venv/
+.venv*/
+# python
+__pycache__
+
+# builds
+build/
+dist/
+# files
 dumps/
 proprietary/
+# temp files
 schema.xsd

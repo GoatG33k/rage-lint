@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- 
+  This element tests:
+   * struct property inheritance from CTuning
+   * struct properties
+   * uint values 
+-->
+<CTaskWitness__Tunables>
+    <Name>example</Name> <!-- inherited from parent struct -->
+    <MaxTimeMoveNearCrimeMs value="0"/> <!-- allow 0 -->
+    <MaxTimeMoveToLawMs value="0"/>
+    <MaxTimeSearchMs value="0"/>
+    <MaxTimeMoveToLawFailedPathfindingMs value="0"/>
+</CTaskWitness__Tunables>

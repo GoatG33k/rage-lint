@@ -1,5 +1,6 @@
 import argparse
 import glob
+import os.path
 from os.path import relpath, realpath, dirname, exists
 from urllib import request
 
@@ -29,8 +30,10 @@ if not exists(schemaPath):
         f.write(response.read().decode('utf-8'))
         f.close()
 
+xsdRoot = None
+xsdSchema = None
+
 try:
-    print("Parsing XSD schema...")
     xsdRoot = etree.parse(schemaPath)
     xsdSchema = etree.XMLSchema(xsdRoot)
 except etree.XMLSchemaParseError as e:
@@ -44,62 +47,84 @@ for el in xsdRoot.iter():
     if parent is not None and parent.tag == '{http://www.w3.org/2001/XMLSchema}schema':
         knownRootTypes.append(el.get('name'))
 
-print("Searching for files to lint...")
-
 files = []
 for _glob in args.globs:
     globFiles = glob.glob(_glob, recursive=True)
     files.extend(globFiles)
 
 totalFiles = len(files)
-warnFiles = []
+skippedFiles = []
 failedFiles = []
+
+
+def handle_pass():
+    print("%s OK%s" % (fg('green'), attr(0)))
 
 
 def handle_fail(path, msg):
     failedFiles.append((path, msg))
-    print("%sFAIL%s" % (fg('red'), attr(0)))
+    print("%s FAIL%s" % (fg('red'), attr(0)))
     print(("  - %s" + msg + "%s") % (fg('red'), attr(0)) + "\n")
 
 
-def handle_warn(path, msg):
-    warnFiles.append((path, msg))
-    print("%sWARN%s" % (fg('yellow'), attr(0)))
-    print(("  - %s" + msg + "%s") % (fg('red'), attr(0)) + "\n")
+def handle_skip(path, msg):
+    skippedFiles.append((path, msg))
+    print("%s WARN%s" % (fg('yellow'), attr(0)))
+    print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n")
 
 
-print("Found " + str(len(files)) + " files to lint...")
+print("%sFound %d file%s to lint...%s" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
 for file in files:
-    print(("Linting " + file).ljust(60), end="")
+    relative_file_path = os.path.relpath(file)
+    print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="")
     try:
         doc = etree.parse(file, parser=etree.XMLParser(remove_comments=True))
         # check that the root is recognized
         rootTagName = doc.getroot().tag
         if rootTagName not in knownRootTypes:
-            handle_warn(file, "The root '%s' is not recognized" % rootTagName)
+            handle_skip(file, "The root '%s' is not recognized" % rootTagName)
             continue
         xsdSchema.assertValid(doc)
-        print("%sOK%s" % (fg('green'), attr(0)))
+        handle_pass()
     except etree.XMLSyntaxError as e:
-        handle_fail(file, str(e))
+        handle_skip(file, str(e))
     except etree.DocumentInvalid as e:
         handle_fail(file, str(e))
 
 totalFailedFiles = len(failedFiles)
-totalWarnFiles = len(warnFiles)
+totalSkippedFiles = len(skippedFiles)
 resultStr = ("%sPASSED%s" % (fg('green'), attr(0)))
 if len(failedFiles) > 0:
     resultStr = ("%sFAIL%s" % (fg('red'), attr(0)))
 
-print("\n  Lint %s!\n\tPassed: %d, Warnings: %d\n\tFailed: %d" %
-      (resultStr, totalFiles - totalFailedFiles, totalWarnFiles, totalFailedFiles), end='')
+totalPassedFiles = totalFiles - totalFailedFiles
+totalPercent = 1
+if totalFiles > 0:
+    totalPercent = (totalPassedFiles / totalFiles)
 
-if totalWarnFiles > 0:
+resultStr = '\n\t'.join((
+    '\n Lint %s!' % resultStr,
+    'Passed: %s%d%s' % (fg('green') if totalPassedFiles > 0 else fg('light_gray'), totalPassedFiles, attr(0)),
+    'Failed: %s%d%s' % (fg('red') if totalFailedFiles > 0 else fg('light_gray'), totalFailedFiles, attr(0)),
+    'Skipped: %s%d%s' % (fg('yellow') if totalSkippedFiles > 0 else fg('light_gray'), totalSkippedFiles, attr(0)),
+))
+print(resultStr, end='')
+
+code = 0
+
+if totalFiles == 0:
+    code = 1
+
+if totalSkippedFiles > 0:
+    code = 1
     print("\n\nFiles with warnings:")
-    for warnFile in warnFiles:
+    for warnFile in skippedFiles:
         print("  - %s%s %s(%s)%s" % (fg('red'), warnFile[0], fg('yellow'), warnFile[1], attr(0)))
-       
+
 if totalFailedFiles > 0:
+    code = 2
     print("\n\nFailed files:")
     for failedFile in failedFiles:
         print("  - %s%s %s(%s)%s" % (fg('red'), failedFile[0], fg('yellow'), failedFile[1], attr(0)))
+
+exit(code)
