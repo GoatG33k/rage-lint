@@ -17,3 +17,9 @@ jobs:
         run: pip install pyinstaller
       - name: Compile .exe
         run: ./build.ps1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: rage-lint.exe
+          path: dist/rage-lint.exe
+          retention-days: 90
