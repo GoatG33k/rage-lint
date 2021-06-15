@@ -2,9 +2,7 @@ on: [push]
 jobs:
   test:
     runs-on: windows-latest
-    name: Run XSD Linting Tests
-    container:
-      image: python:latest
+    name: Build Executable
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
