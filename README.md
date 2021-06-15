@@ -1,6 +1,6 @@
 # rage-lint  
   
-Lint RAGE (only GTA5 at the moment) meta/XML files for validity based off of the [GTA5.xsd]() generated from game code.  
+Lint RAGE (only GTA5 at the moment) meta/XML files for validity based off of the [GTA5.xsd](https://github.com/GoatG33k/gta5-xsd/blob/master/GTA5.xsd) generated from game code.  
   
 This script accepts a series of blobs, and validates all files against GTA5.xsd, allowing to check your metafiles   
 against Rockstar's own definitions.
