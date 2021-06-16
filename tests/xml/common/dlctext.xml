@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- This vehicle metafile is meaningless data for testing,
+     if you try and use it, we will laugh at you. -->
+<CExtraTextMetaFile>
+    <hasGlobalTextFile value="false"/>
+    <hasAdditionalText value="false"/>
+    <isTitleUpdate value="false"/>
+</CExtraTextMetaFile>

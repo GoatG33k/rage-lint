@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- This vehicle metafile is meaningless data for testing,
+     if you try and use it, we will laugh at you. -->
+<CWeaponInfoBlob>
+    <SlotNavigateOrder>
+        <Item>
+            <WeaponSlots>
+                <Item>
+                    <OrderNumber value="10"/>
+                    <Entry>SLOT_1</Entry>
+                </Item>
+                <Item>
+                    <OrderNumber value="20"/>
+                    <Entry>SLOT_2</Entry>
+                </Item>
+            </WeaponSlots>
+        </Item>
+        <Item>
+            <WeaponSlots>
+                <Item>
+                    <OrderNumber value="10"/>
+                    <Entry>SLOT_1</Entry>
+                </Item>
+                <Item>
+                    <OrderNumber value="20"/>
+                    <Entry>SLOT_2</Entry>
+                </Item>
+            </WeaponSlots>
+        </Item>
+    </SlotNavigateOrder>
+    <SlotBestOrder>
+        <WeaponSlots>
+            <Item>
+                <OrderNumber value="20"/>
+                <Entry>SLOT_1</Entry>
+            </Item>
+            <Item>
+                <OrderNumber value="30"/>
+                <Entry>SLOT_2</Entry>
+            </Item>
+        </WeaponSlots>
+    </SlotBestOrder>
+    <TintSpecValues>
+        <Item>
+            <Name>TINT_EXAMPLE</Name>
+            <Tints>
+                <Item>
+                    <SpecFresnel value="0.00000"/>
+                    <SpecFalloffMult value="0.000000"/>
+                    <SpecIntMult value="0.000000"/>
+                    <Spec2Factor value="0.000000"/>
+                    <Spec2ColorInt value="0.000000"/>
+                    <Spec2Color value="0x000deadb33f000"/>
+                </Item>
+                <Item>
+                    <SpecFresnel value="0.00000"/>
+                    <SpecFalloffMult value="0.000000"/>
+                    <SpecIntMult value="0.000000"/>
+                    <Spec2Factor value="0.000000"/>
+                    <Spec2ColorInt value="0.000000"/>
+                    <Spec2Color value="0x000deadb33f000"/>
+                </Item>
+            </Tints>
+        </Item>
+        <Item>
+            <Name>TINT_GUNRUNNING</Name>
+            <Tints>
+                <Item>
+                    <SpecFresnel value="0.00000"/>
+                    <SpecFalloffMult value="0.000000"/>
+                    <SpecIntMult value="0.000000"/>
+                    <Spec2Factor value="0.000000"/>
+                    <Spec2ColorInt value="0.000000"/>
+                    <Spec2Color value="0x000deadb33f000"/>
+                </Item>
+                <Item>
+                    <SpecFresnel value="0.00000"/>
+                    <SpecFalloffMult value="0.000000"/>
+                    <SpecIntMult value="0.000000"/>
+                    <Spec2Factor value="0.000000"/>
+                    <Spec2ColorInt value="0.000000"/>
+                    <Spec2Color value="0x000deadb33f000"/>
+                </Item>
+            </Tints>
+        </Item>
+    </TintSpecValues>
+    <FiringPatternAliases>
+        <Item>
+            <Name>FIRING_PATTERN_EXAMPLE</Name>
+            <Aliases>
+                <Item>
+                    <FiringPattern>FIRING_PATTERN_EXAMPLE_ALIAS</FiringPattern>
+                    <Alias>FIRING_PATTERN_EXAMPLE_ALIAS</Alias>
+                </Item>
+            </Aliases>
+        </Item>
+        <Item>
+            <Name>FIRING_PATTERN_EXAMPLE_2</Name>
+            <Aliases>
+                <Item>
+                    <FiringPattern>FIRING_PATTERN_EXAMPLE_ALIAS_2</FiringPattern>
+                    <Alias>FIRING_PATTERN_EXAMPLE_ALIAS_2</Alias>
+                </Item>
+            </Aliases>
+        </Item>
+    </FiringPatternAliases>
+    <UpperBodyFixupExpressionData>
+        <Item>
+            <Name>example</Name>
+            <Data>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+            </Data>
+        </Item>
+        <Item>
+            <Name>example2</Name>
+            <Data>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+                <Item>
+                    <Idle value="0.000000"/>
+                    <Walk value="0.000000"/>
+                    <Run value="0.000000"/>
+                </Item>
+            </Data>
+        </Item>
+    </UpperBodyFixupExpressionData>
+    <AimingInfos>
+        <Item type="CAimingInfo">
+            <Name>EXAMPLE_STRAFE</Name>
+            <HeadingLimit value="0.000000"/>
+            <SweepPitchMin value="-0.000000"/>
+            <SweepPitchMax value="0.000000"/>
+        </Item>
+    </AimingInfos>
+    <Infos>
+        <Item>
+            <Infos>
+                <Item type="CAmmoInfo">
+                    <Name>AMMO_EXAMPLE</Name>
+                    <Model/>
+                    <Audio/>
+                    <Slot/>
+                    <AmmoMax value="69"/>
+                    <AmmoMax50 value="169"/>
+                    <AmmoMax100 value="9999"/>
+                    <AmmoMaxMP value="250"/>
+                    <AmmoMax50MP value="1000"/>
+                    <AmmoMax100MP value="9999"/>
+                    <AmmoFlags/>
+                </Item>
+            </Infos>
+        </Item>
+    </Infos>
+    <VehicleWeaponInfos>
+        <Item type="CVehicleWeaponInfo">
+            <Name>VEHICLE_DATA_EXAMPLE</Name>
+            <KickbackAmplitude value="0.000000"/>
+            <KickbackImpulse value="0.000000"/>
+        </Item>
+    </VehicleWeaponInfos>
+    <WeaponGroupDamageForArmouredVehicleGlass>
+        <Item>
+            <GroupHash>GROUP_EXAMPLE</GroupHash>
+            <Damage value="0.000000"/>
+        </Item>
+    </WeaponGroupDamageForArmouredVehicleGlass>
+    <Name>Example Example</Name>
+</CWeaponInfoBlob>

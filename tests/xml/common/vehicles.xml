@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- This vehicle metafile is meaningless data for testing,
+     if you try and use it, we will laugh at you. -->
+<CVehicleModelInfo__InitDataList>
+    <residentTxd>EXAMPLE_EXAMPLE</residentTxd>
+    <residentAnims/>
+    <InitDatas>
+        <Item>
+            <modelName>example</modelName>
+            <txdName>example</txdName>
+            <handlingId>EXAMPLE</handlingId>
+            <gameName>EXAMPLE</gameName>
+            <vehicleMakeName>EXAMPLE MODEL</vehicleMakeName>
+            <expressionDictName>null</expressionDictName>
+            <expressionName>null</expressionName>
+            <animConvRoofDictName>null</animConvRoofDictName>
+            <animConvRoofName>null</animConvRoofName>
+            <animConvRoofWindowsAffected/>
+            <ptfxAssetName>null</ptfxAssetName>
+            <audioNameHash/>
+            <layout>LAYOUT_EXAMPLE</layout>
+            <coverBoundOffsets>EXAMPLE_COVER_OFFSET_INFO</coverBoundOffsets>
+            <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
+            <scenarioLayout/>
+            <cameraName>EXAMPLE_FOLLOW_VEHICLE_CAMERA</cameraName>
+            <aimCameraName>EXAMPLE_THIRD_PERSON_VEHICLE_AIM_CAMERA</aimCameraName>
+            <bonnetCameraName>EXAMPLE_CAMERA_MID_NEAR</bonnetCameraName>
+            <povCameraName>EXAMPLE_POV_CAMERA</povCameraName>
+            <FirstPersonDriveByIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonDriveByUnarmedIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonProjectileDriveByIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonProjectileDriveByPassengerIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonDriveByLeftPassengerIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonDriveByRightPassengerIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonDriveByLeftPassengerUnarmedIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonDriveByRightPassengerUnarmedIKOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonMobilePhoneOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <FirstPersonPassengerMobilePhoneOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <PovCameraOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <PovCameraVerticalAdjustmentForRollCage value="0.000000"/>
+            <PovPassengerCameraOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <vfxInfoName>VFXVEHICLEINFO_CAR_EXAMPLE</vfxInfoName>
+            <shouldUseCinematicViewMode value="false"/>
+            <shouldCameraTransitionOnClimbUpDown value="true"/>
+            <shouldCameraIgnoreExiting value="false"/>
+            <AllowPretendOccupants value="false"/>
+            <AllowJoyriding value="false"/>
+            <AllowSundayDriving value="false"/>
+            <AllowBodyColorMapping value="false"/>
+            <wheelScale value="0.000000"/>
+            <wheelScaleRear value="0.000000"/>
+            <dirtLevelMin value="0.000000"/>
+            <dirtLevelMax value="0.000000"/>
+            <envEffScaleMin value="0.000000"/>
+            <envEffScaleMax value="0.000000"/>
+            <envEffScaleMin2 value="0.000000"/>
+            <envEffScaleMax2 value="0.000000"/>
+            <damageMapScale value="0.000000"/>
+            <damageOffsetScale value="0.000000"/>
+            <diffuseTint value="0x00AAAAAA"/>
+            <steerWheelMult value="0.000000"/>
+            <HDTextureDist value="0.000000"/>
+            <lodDistances content="float_array">
+                0.000000
+                1.000000
+                2.000000
+                3.000000
+                4.000000
+                5.000000
+            </lodDistances>
+            <minSeatHeight value="0.000"/>
+            <identicalModelSpawnDistance value="20"/>
+            <maxNumOfSameColor value="1"/>
+            <defaultBodyHealth value="0000.000000"/>
+            <pretendOccupantsScale value="0.000000"/>
+            <visibleSpawnDistScale value="0.000000"/>
+            <trackerPathWidth value="0.000000"/>
+            <weaponForceMult value="0.000000"/>
+            <frequency value="69"/>
+            <swankness>SWANKNESS_EXAMPLE</swankness>
+            <maxNum value="2"/>
+            <flags>FLAG_EXAMPLE_AAAAAAAAAAAA</flags>
+            <type>VEHICLE_TYPE_CAR</type>
+            <plateType>VPT_BACK_PLATES</plateType>
+            <dashboardType>VDT_EXAMPLE</dashboardType>
+            <vehicleClass>VC_EXAMPLE</vehicleClass>
+            <wheelType>VWT_EXAMPLE</wheelType>
+            <trailers/>
+            <additionalTrailers/>
+            <drivers/>
+            <extraIncludes/>
+            <doorsWithCollisionWhenClosed/>
+            <driveableDoors/>
+            <bumpersNeedToCollideWithMap value="false"/>
+            <needsRopeTexture value="false"/>
+            <requiredExtras/>
+            <rewards/>
+            <cinematicPartCamera>
+                <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
+                <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
+                <Item>WHEEL_REAR_RIGHT_CAMERA</Item>
+                <Item>WHEEL_REAR_LEFT_CAMERA</Item>
+            </cinematicPartCamera>
+            <NmBraceOverrideSet/>
+            <buoyancySphereOffset x="0.000000" y="0.000000" z="0.000000"/>
+            <buoyancySphereSizeScale value="0.000000"/>
+            <pOverrideRagdollThreshold type="NULL"/>
+            <firstPersonDrivebyData>
+                <Item>EXAMPLE_FRONT_LEFT</Item>
+                <Item>EXAMPLE_FRONT_RIGHT</Item>
+            </firstPersonDrivebyData>
+        </Item>
+        <!-- test multiple values -->
+        <Item/>
+    </InitDatas>
+</CVehicleModelInfo__InitDataList>

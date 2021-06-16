@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- This vehicle metafile is meaningless data for testing,
+     if you try and use it, we will laugh at you. -->
+<SContentUnlocks>
+    <listOfUnlocks>
+        <Item>EXAMPLE_CONTENT_UNLOCK</Item>
+        <!-- multiple -->
+        <Item>EXAMPLE_CONTENT_UNLOCK_2</Item>
+    </listOfUnlocks>
+</SContentUnlocks>

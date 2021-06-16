@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ASSERT PASS -->
+
+<!-- This vehicle metafile is meaningless data for testing,
+     if you try and use it, we will laugh at you. -->
+<CVehicleModelInfoVarGlobal>
+    <Kits>
+        <Item>
+            <kitName>420_example_modkit</kitName>
+            <id value="420"/>
+            <kitType>EXAMPLE</kitType>
+            <visibleMods>
+                <Item>
+                    <modelName>example_example1</modelName>
+                    <modShopLabel>EXAMPLE_EXAMPLE1</modShopLabel>
+                    <linkedModels/>
+                    <turnOffBones/>
+                    <type>EXAMPLE_TYPE</type>
+                    <bone>example_bone</bone>
+                    <collisionBone>example_collision_bone</collisionBone>
+                    <cameraPos>EXAMPLE_CAMERA</cameraPos>
+                    <audioApply value="0.000000"/>
+                    <weight value="420"/>
+                    <turnOffExtra value="true"/>
+                    <disableBonnetCamera value="true"/>
+                    <allowBonnetSlide value="true"/>
+                </Item>
+            </visibleMods>
+            <linkMods>
+                <Item>
+                    <modelName>example_link_mod</modelName>
+                    <bone>example_bone</bone>
+                    <turnOffExtra value="true"/>
+                </Item>
+            </linkMods>
+            <statMods>
+                <Item>
+                    <identifier/>
+                    <modifier value="69"/>
+                    <audioApply value="0.000000"/>
+                    <weight value="1"/>
+                    <type>EXAMPLE_TYPE</type>
+                </Item>
+            </statMods>
+            <slotNames>
+                <Item>
+                    <slot>EXAMPLE_SLOT_NAME</slot>
+                    <name>EXAMPLE_BODY_PART</name>
+                </Item>
+            </slotNames>
+            <liveryNames/>
+        </Item>
+        <!-- test type -->
+        <Item type="NULL"/>
+    </Kits>
+</CVehicleModelInfoVarGlobal>
