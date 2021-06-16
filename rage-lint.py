@@ -84,7 +84,7 @@ def handle_skip(path, msg):
     print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n", file=sys.stderr)
 
 
-__VERSION__ = '0.0.1-rc2'
+__VERSION__ = '0.0.1-rc3'
 copyright_str = '\n'.join((
     '===',
     '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
@@ -118,19 +118,7 @@ resultStr = ("%sPASSED%s" % (fg('green'), attr(0)))
 if len(failedFiles) > 0:
     resultStr = ("%sFAIL%s" % (fg('red'), attr(0)))
 
-totalPassedFiles = totalFiles - totalFailedFiles
-totalPercent = 1
-if totalFiles > 0:
-    totalPercent = (totalPassedFiles / totalFiles)
-
-resultStr = '\n\t'.join((
-    '\n Lint %s!' % resultStr,
-    'Passed: %s%d%s' % (fg('green') if totalPassedFiles > 0 else fg('light_gray'), totalPassedFiles, attr(0)),
-    'Failed: %s%d%s' % (fg('red') if totalFailedFiles > 0 else fg('light_gray'), totalFailedFiles, attr(0)),
-    'Skipped: %s%d%s' % (fg('yellow') if totalSkippedFiles > 0 else fg('light_gray'), totalSkippedFiles, attr(0)),
-))
-print(resultStr, end='')
-
+totalPassedFiles = totalFiles - totalFailedFiles - totalSkippedFiles
 code = 0
 
 if totalFiles == 0:
@@ -138,14 +126,33 @@ if totalFiles == 0:
 
 if totalSkippedFiles > 0:
     code = 1
-    print("\n\nFiles with warnings:")
+    print("\n\nSkipped files (%d):" % totalSkippedFiles)
     for warnFile in skippedFiles:
         print("  - %s%s %s(%s)%s" % (fg('red'), warnFile[0], fg('yellow'), warnFile[1], attr(0)))
 
 if totalFailedFiles > 0:
     code = 2
-    print("\n\nFailed files:")
+    print("\n\nFailed files (%d):" % totalFailedFiles)
     for failedFile in failedFiles:
         print("  - %s%s %s(%s)%s" % (fg('red'), failedFile[0], fg('yellow'), failedFile[1], attr(0)))
+
+totalPercent = 1
+if totalFiles > 0:
+    totalPercent = (totalPassedFiles / (totalFiles - totalSkippedFiles))
+
+if totalPercent > 0.8:
+    totalPercentColorStr = fg('green')
+elif totalPercent > 0.5:
+    totalPercentColorStr = fg('yellow')
+else:
+    totalPercentColorStr = fg('red')
+
+resultStr = '\n\t'.join((
+    '\n Lint %s! (%s%s%s)' % (resultStr, totalPercentColorStr, str(round(totalPercent * 100)) + "%", attr(0)),
+    'Passed: %s%d%s' % (fg('green') if totalPassedFiles > 0 else fg('light_gray'), totalPassedFiles, attr(0)),
+    'Failed: %s%d%s' % (fg('red') if totalFailedFiles > 0 else fg('light_gray'), totalFailedFiles, attr(0)),
+    'Skipped: %s%d%s' % (fg('yellow') if totalSkippedFiles > 0 else fg('light_gray'), totalSkippedFiles, attr(0)),
+))
+print(resultStr, end='')
 
 sys.exit(code)
