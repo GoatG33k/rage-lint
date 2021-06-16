@@ -1,2 +1,2 @@
 pip install pyinstaller
-pyinstaller --onefile --clean --key=g0at ./rage-lint.py
+pyinstaller --onefile --clean --icon=./icon.ico --key=g0at ./rage-lint.py
