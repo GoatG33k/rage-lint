@@ -148,7 +148,7 @@ else:
     totalPercentColorStr = fg('red')
 
 resultStr = '\n\t'.join((
-    '\n Lint %s! (%s%s%s)' % (resultStr, totalPercentColorStr, str(round(totalPercent * 100)) + "%", attr(0)),
+    '\n Lint %s! (%s%s%s)' % (resultStr, totalPercentColorStr, str(round(totalPercent * 100, 2)) + "%", attr(0)),
     'Passed: %s%d%s' % (fg('green') if totalPassedFiles > 0 else fg('light_gray'), totalPassedFiles, attr(0)),
     'Failed: %s%d%s' % (fg('red') if totalFailedFiles > 0 else fg('light_gray'), totalFailedFiles, attr(0)),
     'Skipped: %s%d%s' % (fg('yellow') if totalSkippedFiles > 0 else fg('light_gray'), totalSkippedFiles, attr(0)),
