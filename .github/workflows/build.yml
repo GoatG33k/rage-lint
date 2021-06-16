@@ -15,7 +15,7 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Install pyinstaller
-        run: pip install pyinstaller
+        run: 'pip install pyinstaller[encryption]'
       - name: Compile .exe
         run: ./build.ps1
       - name: Upload artifact

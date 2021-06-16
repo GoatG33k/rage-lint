@@ -2,6 +2,7 @@ import argparse
 import glob
 import os.path
 import sys
+import time
 from os.path import relpath, realpath, dirname, exists
 from urllib import request
 
@@ -22,8 +23,18 @@ argParser.add_argument('globs', metavar='glob', type=str, nargs='+', help="glob 
 argParser.add_argument('-v', '--verbose', action='count', default=0)
 args = argParser.parse_args()
 
+dataDir = dirname(realpath(__file__))
+if getattr(sys, 'frozen', False):
+    dataDir = sys._MEIPASS
+
 xsdSchema = None
-schemaPath = relpath(dirname(realpath(__file__)) + '/schema.xsd')
+schemaPath = relpath(dataDir + '/schema.xsd')
+if exists(schemaPath):
+    schemaAge = time.time() - (os.stat(schemaPath)).st_mtime
+    # remove cached after 1 week
+    if schemaAge > (3600 * 24 * 7):
+        os.unlink(schemaPath)
+
 if not exists(schemaPath):
     xsdUrl = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
     with request.urlopen(xsdUrl) as response, open(schemaPath, 'w') as f:
