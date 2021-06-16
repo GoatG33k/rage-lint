@@ -9,6 +9,8 @@ from urllib import request
 from colored import fg, attr
 from lxml import etree
 
+__VERSION__ = '0.0.1'
+
 
 def silly_log(s):
     print(s) if args.verbose >= 2 else None
@@ -84,7 +86,6 @@ def handle_skip(path, msg):
     print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n", file=sys.stderr)
 
 
-__VERSION__ = '0.0.1-rc3'
 copyright_str = '\n'.join((
     '===',
     '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
