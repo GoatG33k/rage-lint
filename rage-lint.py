@@ -3,13 +3,13 @@ import glob
 import os.path
 import sys
 import time
-from os.path import relpath, realpath, dirname, exists
+from os.path import abspath, realpath, dirname, exists
 from urllib import request
 
 from colored import fg, attr
 from lxml import etree
 
-__VERSION__ = '0.0.1'
+__VERSION__ = '0.0.2'
 
 
 def silly_log(s):
@@ -30,7 +30,7 @@ if getattr(sys, 'frozen', False):
     dataDir = sys._MEIPASS
 
 xsdSchema = None
-schemaPath = relpath(dataDir + '/schema.xsd')
+schemaPath = abspath(dataDir + '/schema.xsd')
 if exists(schemaPath):
     schemaAge = time.time() - (os.stat(schemaPath)).st_mtime
     # remove cached after 1 week
@@ -97,7 +97,7 @@ print(fg('cyan') + copyright_str + attr(0))
 
 print("%sFound %d file%s to lint...%s\n" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
 for file in files:
-    relative_file_path = os.path.relpath(file)
+    relative_file_path = realpath(file).replace(os.getcwd(), './')
     print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="", file=sys.stderr)
     try:
         doc = etree.parse(file, parser=etree.XMLParser(remove_comments=True))
