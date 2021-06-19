@@ -6,6 +6,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run XSD Linting Tests
+    container:
+      image: python:latest
     steps:
       - uses: actions/checkout@v2
       - name: Install requirements
