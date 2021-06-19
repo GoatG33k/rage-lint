@@ -25,6 +25,15 @@ argParser.add_argument('globs', metavar='glob', type=str, nargs='+', help="glob 
 argParser.add_argument('-v', '--verbose', action='count', default=0)
 args = argParser.parse_args()
 
+copyright_str = '\n'.join((
+    '===',
+    '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
+    '===     %s[[ %sVersion %s%s%s ]]%s' % (
+        fg('dark_gray'), fg('white'), fg('yellow'), __VERSION__, fg('dark_gray'), fg('cyan')),
+    '===\n',
+))
+print(fg('cyan') + copyright_str + attr(0))
+
 dataDir = dirname(realpath(__file__))
 if getattr(sys, 'frozen', False):
     dataDir = sys._MEIPASS
@@ -35,10 +44,12 @@ if exists(schemaPath):
     schemaAge = time.time() - (os.stat(schemaPath)).st_mtime
     # remove cached after 1 week
     if schemaAge > (3600 * 24 * 7):
+        print("%sRemoving old schema and re-fetching...%s" % (fg('light_gray'), attr(0)))
         os.unlink(schemaPath)
 
 if not exists(schemaPath):
     xsdUrl = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
+    print("%sDownloading schema...%s" % (fg('cyan'), attr(0)))
     with request.urlopen(xsdUrl) as response, open(schemaPath, 'w') as f:
         f.write(response.read().decode('utf-8'))
         f.close()
@@ -47,6 +58,7 @@ xsdRoot = None
 xsdSchema = None
 
 try:
+    print("%sReading schema...%s" % (fg('yellow'), attr(0)))
     xsdRoot = etree.parse(schemaPath)
     xsdSchema = etree.XMLSchema(xsdRoot)
 except etree.XMLSchemaParseError as e:
@@ -86,18 +98,9 @@ def handle_skip(path, msg):
     print(("  - %s" + msg + "%s") % (fg('yellow'), attr(0)) + "\n", file=sys.stderr)
 
 
-copyright_str = '\n'.join((
-    '===',
-    '=== %srage-lint%s - RAGE Metafile linter%s' % (fg('red'), fg('yellow'), fg('cyan')),
-    '===     %s[[ %sVersion %s%s%s ]]%s' % (
-        fg('dark_gray'), fg('white'), fg('yellow'), __VERSION__, fg('dark_gray'), fg('cyan')),
-    '===\n',
-))
-print(fg('cyan') + copyright_str + attr(0))
-
 print("%sFound %d file%s to lint...%s\n" % (fg('cyan'), len(files), 's' if len(files) > 0 else '', attr(0)))
 for file in files:
-    relative_file_path = realpath(file).replace(os.getcwd(), './')
+    relative_file_path = realpath(file).replace(os.getcwd(), '.')
     print(("Linting %s%s%s" % (fg('yellow'), relative_file_path, attr(0))).ljust(75), end="", file=sys.stderr)
     try:
         doc = etree.parse(file, parser=etree.XMLParser(remove_comments=True))
