@@ -109,6 +109,18 @@ for file in files:
         if rootTagName not in knownRootTypes:
             handle_skip(file, "The root '%s' is not recognized" % rootTagName)
             continue
+        # we do a bit of magic to process R* ambiguous array types:
+        # since <Item> can be anything, if a type is specified in the file,
+        # rewrite the element to be a special element named '__Item__{type}'
+        # which will be a determininstic type
+        for el in doc.iter():
+            if el.tag not in ['Item', 'item']:
+                continue
+            type_attr = el.attrib.get('type')
+            if type_attr is not None and 'xs:' not in type_attr and type_attr != 'NULL' and type_attr in knownRootTypes:
+                new_tag_name = "Item__" + type_attr
+                el.tag = new_tag_name
+
         xsdSchema.assertValid(doc)
         handle_pass()
     except etree.XMLSyntaxError as e:
