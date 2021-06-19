@@ -9,7 +9,7 @@ from urllib import request
 from colored import fg, attr
 from lxml import etree
 
-__VERSION__ = '0.0.2'
+__VERSION__ = '0.0.3'
 
 
 def silly_log(s):
