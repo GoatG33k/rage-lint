@@ -22,6 +22,7 @@ def debug(s):
 
 argParser = argparse.ArgumentParser(description='A linter for RAGE metafiles')
 argParser.add_argument('globs', metavar='glob', type=str, nargs='+', help="glob paths to lint")
+argParser.add_argument('-u', '--update', action='store_true', help='forcibly update to the latest schema')
 argParser.add_argument('-v', '--verbose', action='count', default=0)
 args = argParser.parse_args()
 
@@ -43,13 +44,13 @@ schemaPath = abspath(dataDir + '/schema.xsd')
 if exists(schemaPath):
     schemaAge = time.time() - (os.stat(schemaPath)).st_mtime
     # remove cached after 1 week
-    if schemaAge > (3600 * 24 * 7):
-        print("%sRemoving old schema and re-fetching...%s" % (fg('light_gray'), attr(0)))
+    if schemaAge > (3600 * 24 * 7) or args.update:
+        print("%sRemoving old schema and re-fetching...%s" % (fg('yellow'), attr(0)))
         os.unlink(schemaPath)
 
 if not exists(schemaPath):
     xsdUrl = "https://raw.githubusercontent.com/GoatG33k/gta5-xsd/master/GTA5.xsd"
-    print("%sDownloading schema...%s" % (fg('cyan'), attr(0)))
+    print("%sDownloading schema...%s" % (fg('yellow'), attr(0)))
     with request.urlopen(xsdUrl) as response, open(schemaPath, 'w') as f:
         f.write(response.read().decode('utf-8'))
         f.close()
