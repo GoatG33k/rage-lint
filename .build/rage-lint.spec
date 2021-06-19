@@ -1,11 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 
-block_cipher = pyi_crypto.PyiBlockCipher(key='g0at')
+block_cipher = pyi_crypto.PyiBlockCipher(key='g0atg33k')
 
 
-a = Analysis(['rage-lint.py'],
-             pathex=['C:\\Users\\Evan\\Documents\\Code\\cfx-lint'],
+a = Analysis(['..\\rage-lint.py'],
+             pathex=['C:\\Users\\Evan\\Documents\\Code\\cfx-lint\\.build'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -31,4 +31,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True , icon='icon.ico')
+          console=True , version='rage-lint.version', icon='icon.ico')
